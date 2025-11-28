@@ -41,7 +41,7 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Contact Form Submission
+// Contact Form Submission via Formspree
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 
@@ -50,14 +50,7 @@ if (contactForm) {
         e.preventDefault();
         
         // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            company: document.getElementById('company').value,
-            phone: document.getElementById('phone').value,
-            plan: document.getElementById('plan').value,
-            message: document.getElementById('message').value
-        };
+        const formData = new FormData(contactForm);
         
         // Show loading state
         const submitButton = contactForm.querySelector('button[type="submit"]');
@@ -65,57 +58,60 @@ if (contactForm) {
         submitButton.textContent = 'Sending...';
         submitButton.disabled = true;
         
+        // Hide any previous status messages
+        formStatus.style.display = 'none';
+        formStatus.className = 'form-status';
+        
         try {
-            // Construct email body
-            const emailBody = `
-New NowPV Contact Form Submission
-
-Name: ${formData.name}
-Email: ${formData.email}
-Company: ${formData.company || 'Not provided'}
-Phone: ${formData.phone || 'Not provided'}
-Interested In: ${formData.plan}
-
-Message:
-${formData.message || 'No message provided'}
-
----
-Submitted from: ${window.location.href}
-Date: ${new Date().toLocaleString()}
-            `.trim();
+            // Submit to Formspree
+            const response = await fetch('https://formspree.io/f/xqavwbjv', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
             
-            // Create mailto link
-            const mailtoLink = `mailto:contact@ecosite.uk?subject=NowPV Contact Form - ${formData.name}&body=${encodeURIComponent(emailBody)}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show success message
-            formStatus.textContent = 'Thank you! Your email client should open with your message. Please send it to complete your submission.';
-            formStatus.className = 'form-status success';
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Alternative: Show success even if mailto fails
-            setTimeout(() => {
-                formStatus.textContent = 'Form submitted! We\'ll be in touch within 24 hours.';
-            }, 2000);
+            if (response.ok) {
+                // Success
+                formStatus.textContent = '✓ Thank you! Your message has been sent successfully. We\'ll be in touch within 24 hours.';
+                formStatus.className = 'form-status success';
+                formStatus.style.display = 'block';
+                
+                // Reset form
+                contactForm.reset();
+                
+            } else {
+                // Formspree returned an error
+                const data = await response.json();
+                
+                if (data.errors) {
+                    // Show validation errors
+                    const errorMessages = data.errors.map(error => error.message).join(', ');
+                    formStatus.textContent = `✗ Error: ${errorMessages}`;
+                } else {
+                    formStatus.textContent = '✗ There was a problem sending your message. Please try again or email us directly at contact@ecosite.uk';
+                }
+                
+                formStatus.className = 'form-status error';
+                formStatus.style.display = 'block';
+            }
             
         } catch (error) {
             console.error('Form submission error:', error);
-            formStatus.textContent = 'There was an error submitting the form. Please email us directly at contact@ecosite.uk';
+            formStatus.textContent = '✗ Network error. Please check your connection and try again, or email us directly at contact@ecosite.uk';
             formStatus.className = 'form-status error';
+            formStatus.style.display = 'block';
         } finally {
             submitButton.textContent = originalButtonText;
             submitButton.disabled = false;
         }
         
-        // Hide status message after 10 seconds
+        // Hide status message after 15 seconds
         setTimeout(() => {
             formStatus.style.display = 'none';
             formStatus.className = 'form-status';
-        }, 10000);
+        }, 15000);
     });
 }
 
