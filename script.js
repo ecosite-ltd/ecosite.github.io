@@ -49,8 +49,15 @@ if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
+        console.log('Form submitted - starting process...');
+        
         // Get form data
         const formData = new FormData(contactForm);
+        
+        // Debug: Log form data
+        for (let pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
         
         // Show loading state
         const submitButton = contactForm.querySelector('button[type="submit"]');
@@ -58,13 +65,18 @@ if (contactForm) {
         submitButton.textContent = 'Sending...';
         submitButton.disabled = true;
         
-        // Hide any previous status messages
-        formStatus.style.display = 'none';
+        // Show initial status
+        formStatus.textContent = '📤 Sending your message...';
         formStatus.className = 'form-status';
+        formStatus.style.display = 'block';
+        formStatus.style.backgroundColor = '#fff3cd';
+        formStatus.style.color = '#856404';
         
         try {
+            console.log('Sending to Formspree...');
+            
             // Submit to Formspree
-            const response = await fetch('https://formspree.io/f/xqavwbjv', {
+            const response = await fetch('https://formspree.io/f/xzzlygnb', {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -72,8 +84,15 @@ if (contactForm) {
                 }
             });
             
+            console.log('Response status:', response.status);
+            console.log('Response ok:', response.ok);
+            
+            const data = await response.json();
+            console.log('Response data:', data);
+            
             if (response.ok) {
                 // Success
+                console.log('✓ Form submitted successfully!');
                 formStatus.textContent = '✓ Thank you! Your message has been sent successfully. We\'ll be in touch within 24 hours.';
                 formStatus.className = 'form-status success';
                 formStatus.style.display = 'block';
@@ -83,12 +102,13 @@ if (contactForm) {
                 
             } else {
                 // Formspree returned an error
-                const data = await response.json();
+                console.error('Formspree error:', data);
                 
                 if (data.errors) {
                     // Show validation errors
                     const errorMessages = data.errors.map(error => error.message).join(', ');
                     formStatus.textContent = `✗ Error: ${errorMessages}`;
+                    console.error('Validation errors:', errorMessages);
                 } else {
                     formStatus.textContent = '✗ There was a problem sending your message. Please try again or email us directly at contact@ecosite.uk';
                 }
@@ -99,7 +119,7 @@ if (contactForm) {
             
         } catch (error) {
             console.error('Form submission error:', error);
-            formStatus.textContent = '✗ Network error. Please check your connection and try again, or email us directly at contact@ecosite.uk';
+            formStatus.textContent = '✗ Network error: ' + error.message + '. Please check your connection and try again, or email us directly at contact@ecosite.uk';
             formStatus.className = 'form-status error';
             formStatus.style.display = 'block';
         } finally {
@@ -107,11 +127,13 @@ if (contactForm) {
             submitButton.disabled = false;
         }
         
-        // Hide status message after 15 seconds
-        setTimeout(() => {
-            formStatus.style.display = 'none';
-            formStatus.className = 'form-status';
-        }, 15000);
+        // Hide status message after 15 seconds (only if success)
+        if (formStatus.classList.contains('success')) {
+            setTimeout(() => {
+                formStatus.style.display = 'none';
+                formStatus.className = 'form-status';
+            }, 15000);
+        }
     });
 }
 
