@@ -46,95 +46,115 @@ const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        console.log('Form submitted - starting process...');
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        
-        // Debug: Log form data
-        for (let pair of formData.entries()) {
-            console.log(pair[0] + ': ' + pair[1]);
-        }
-        
-        // Show loading state
-        const submitButton = contactForm.querySelector('button[type="submit"]');
-        const originalButtonText = submitButton.textContent;
-        submitButton.textContent = 'Sending...';
-        submitButton.disabled = true;
-        
-        // Show initial status
-        formStatus.textContent = '📤 Sending your message...';
-        formStatus.className = 'form-status';
-        formStatus.style.display = 'block';
-        formStatus.style.backgroundColor = '#fff3cd';
-        formStatus.style.color = '#856404';
-        
-        try {
-            console.log('Sending to Formspree...');
+    // Formspree AJAX requires reCAPTCHA to be disabled
+    // Using native form submission instead (more reliable)
+    const useAjax = false; // Set to true only if reCAPTCHA is disabled in Formspree settings
+    
+    if (useAjax) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
             
-            // Submit to Formspree
-            const response = await fetch('https://formspree.io/f/xzzlygnb', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
+            console.log('Form submitted - starting process...');
             
-            console.log('Response status:', response.status);
-            console.log('Response ok:', response.ok);
+            // Get form data
+            const formData = new FormData(contactForm);
             
-            const data = await response.json();
-            console.log('Response data:', data);
-            
-            if (response.ok) {
-                // Success
-                console.log('✓ Form submitted successfully!');
-                formStatus.textContent = '✓ Thank you! Your message has been sent successfully. We\'ll be in touch within 24 hours.';
-                formStatus.className = 'form-status success';
-                formStatus.style.display = 'block';
-                
-                // Reset form
-                contactForm.reset();
-                
-            } else {
-                // Formspree returned an error
-                console.error('Formspree error:', data);
-                
-                if (data.errors) {
-                    // Show validation errors
-                    const errorMessages = data.errors.map(error => error.message).join(', ');
-                    formStatus.textContent = `✗ Error: ${errorMessages}`;
-                    console.error('Validation errors:', errorMessages);
-                } else {
-                    formStatus.textContent = '✗ There was a problem sending your message. Please try again or email us directly at contact@ecosite.uk';
-                }
-                
-                formStatus.className = 'form-status error';
-                formStatus.style.display = 'block';
+            // Debug: Log form data
+            console.log('Form data being sent:');
+            for (let pair of formData.entries()) {
+                console.log(pair[0] + ': ' + pair[1]);
             }
             
-        } catch (error) {
-            console.error('Form submission error:', error);
-            formStatus.textContent = '✗ Network error: ' + error.message + '. Please check your connection and try again, or email us directly at contact@ecosite.uk';
-            formStatus.className = 'form-status error';
+            // Show loading state
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+            
+            // Show initial status
+            formStatus.textContent = '📤 Sending your message...';
+            formStatus.className = 'form-status';
             formStatus.style.display = 'block';
-        } finally {
-            submitButton.textContent = originalButtonText;
-            submitButton.disabled = false;
-        }
-        
-        // Hide status message after 15 seconds (only if success)
-        if (formStatus.classList.contains('success')) {
-            setTimeout(() => {
-                formStatus.style.display = 'none';
-                formStatus.className = 'form-status';
-            }, 15000);
-        }
-    });
+            formStatus.style.backgroundColor = '#fff3cd';
+            formStatus.style.color = '#856404';
+            
+            try {
+                console.log('Sending to Formspree endpoint: https://formspree.io/f/xzzlygnb');
+                
+                // Submit to Formspree
+                const response = await fetch('https://formspree.io/f/xzzlygnb', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                console.log('Response status:', response.status);
+                console.log('Response statusText:', response.statusText);
+                console.log('Response ok:', response.ok);
+                
+                let data;
+                try {
+                    data = await response.json();
+                    console.log('Response data:', JSON.stringify(data, null, 2));
+                } catch (jsonError) {
+                    console.error('Could not parse JSON response:', jsonError);
+                    const text = await response.text();
+                    console.log('Response text:', text);
+                }
+                
+                if (response.ok) {
+                    // Success
+                    console.log('✓ Form submitted successfully!');
+                    formStatus.textContent = '✓ Thank you! Your message has been sent successfully. We\'ll be in touch within 24 hours.';
+                    formStatus.className = 'form-status success';
+                    formStatus.style.display = 'block';
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                } else {
+                    // Formspree returned an error
+                    console.error('Formspree error response:', data);
+                    
+                    let errorMessage = 'There was a problem sending your message.';
+                    
+                    if (data && data.errors) {
+                        // Show validation errors
+                        const errorMessages = data.errors.map(error => error.message || error.field).join(', ');
+                        errorMessage = `Validation error: ${errorMessages}`;
+                        console.error('Validation errors:', errorMessages);
+                    } else if (data && data.error) {
+                        errorMessage = data.error;
+                    }
+                    
+                    formStatus.textContent = `✗ ${errorMessage} Please try again or email us directly at contact@ecosite.uk`;
+                    formStatus.className = 'form-status error';
+                    formStatus.style.display = 'block';
+                }
+                
+            } catch (error) {
+                console.error('Form submission exception:', error);
+                console.error('Error stack:', error.stack);
+                formStatus.textContent = '✗ Network error: ' + error.message + '. Please check your connection and try again, or email us directly at contact@ecosite.uk';
+                formStatus.className = 'form-status error';
+                formStatus.style.display = 'block';
+            } finally {
+                submitButton.textContent = originalButtonText;
+                submitButton.disabled = false;
+            }
+            
+            // Hide status message after 15 seconds (only if success)
+            if (formStatus.classList.contains('success')) {
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                    formStatus.className = 'form-status';
+                }, 15000);
+            }
+        });
+    }
+    // If useAjax is false, form will submit normally using action/method attributes
 }
 
 // Smooth scroll for anchor links
