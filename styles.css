@@ -478,6 +478,12 @@ body {
     color: var(--text-light);
 }
 
+/* Coming Soon pricing style */
+.pricing-header .price:contains("Coming Soon") {
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
 .pricing-description {
     color: var(--text-medium);
     margin-bottom: 1.5rem;
