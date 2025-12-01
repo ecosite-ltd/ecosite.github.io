@@ -314,6 +314,8 @@ body {
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow-lg);
+    transform: scale(1.15);
+    transform-origin: left center;
 }
 
 .nowpv-screenshot img {
@@ -705,6 +707,10 @@ body {
     .nowpv-content {
         grid-template-columns: 1fr;
         gap: 3rem;
+    }
+
+    .nowpv-screenshot {
+        transform: scale(1);
     }
 
     .contact-content {
