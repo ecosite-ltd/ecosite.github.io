@@ -84,34 +84,52 @@
         font-size: 1.75rem;
         font-weight: 700;
         color: var(--text-dark);
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         text-align: center;
     }
 
     .plan-price {
-        font-size: 2.75rem;
-        font-weight: 700;
-        color: var(--primary-color);
-        margin-bottom: 0.5rem;
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: 0.25rem;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .plan-price span {
+        font-size: 1.5rem;
+        margin-right: 0.25rem;
+        color: var(--text-medium);
     }
 
     .plan-price-small {
         color: var(--text-light);
         font-size: 0.95rem;
-        margin-bottom: 1.25rem;
+        margin-bottom: 1.5rem;
         text-align: center;
     }
 
     .plan-credits {
         background: rgba(45, 134, 89, 0.1);
         color: #1a5c3e;
-        padding: 0.75rem 1rem;
+        padding: 0.85rem 1rem;
         border-radius: 6px;
         font-weight: 600;
         font-size: 1.05rem;
         margin-bottom: 0.75rem;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .plan-credits span {
+        font-size: 0.85rem;
+        font-weight: 500;
+        opacity: 0.85;
     }
 
     .pricing-card.featured .plan-credits {
@@ -153,7 +171,7 @@
         }
         
         .plan-price {
-            font-size: 2.25rem;
+            font-size: 2.5rem;
         }
     }
     </style>
@@ -326,9 +344,14 @@
                     <div class="pricing-card">
                         <div class="popular-badge">Coming Soon</div>
                         <h3 class="plan-name">Local</h3>
-                        <div class="plan-price" style="font-size: 2.25rem; font-weight: 700; color: var(--text-dark);">100 Credits</div>
-                        <div class="plan-price-small">Per Month</div>
-                        <div class="plan-credits" style="background: rgba(0,0,0,0.05); color: var(--text-dark);">~£1.99 per site</div>
+                        <div class="plan-price"><span>£</span>199</div>
+                        <div class="plan-price-small">/mo (billed annually)</div>
+                        
+                        <div class="plan-credits" style="background: rgba(0,0,0,0.05); color: var(--text-dark);">
+                            100 Credits per month
+                            <span>(~£1.99 per site)</span>
+                        </div>
+                        
                         <p style="text-align: center; color: var(--text-medium); margin: 1.5rem 0 2rem; line-height: 1.5;">Ideal for local installers focused on specific postcodes and counties.</p>
                         
                         <a href="#contact" class="button button-outline select-plan-btn">Join Waitlist</a>
@@ -337,9 +360,14 @@
                     <div class="pricing-card featured">
                         <div class="popular-badge">Coming Soon</div>
                         <h3 class="plan-name">Regional</h3>
-                        <div class="plan-price" style="font-size: 2.25rem; font-weight: 700; color: var(--text-dark);">250 Credits</div>
-                        <div class="plan-price-small">Per Month</div>
-                        <div class="plan-credits">~£1.20 per site</div>
+                        <div class="plan-price"><span>£</span>299</div>
+                        <div class="plan-price-small">/mo (billed annually)</div>
+                        
+                        <div class="plan-credits">
+                            250 Credits per month
+                            <span>(~£1.20 per site)</span>
+                        </div>
+                        
                         <p style="text-align: center; color: var(--primary-color); font-weight: 700; margin-bottom: 0.5rem;">40% Volume Savings!</p>
                         <p style="text-align: center; color: var(--text-medium); margin: 0 0 2rem; line-height: 1.5;">Best value for growing businesses scaling their sales pipeline.</p>
                         
@@ -349,9 +377,14 @@
                     <div class="pricing-card">
                         <div class="popular-badge">Coming Soon</div>
                         <h3 class="plan-name">National</h3>
-                        <div class="plan-price" style="font-size: 2.25rem; font-weight: 700; color: var(--text-dark);">500 Credits</div>
-                        <div class="plan-price-small">Per Month</div>
-                        <div class="plan-credits" style="background: rgba(0,0,0,0.05); color: var(--text-dark);">~£0.80 per site</div>
+                        <div class="plan-price"><span>£</span>399</div>
+                        <div class="plan-price-small">/mo (billed annually)</div>
+                        
+                        <div class="plan-credits" style="background: rgba(0,0,0,0.05); color: var(--text-dark);">
+                            500 Credits per month
+                            <span>(~£0.80 per site)</span>
+                        </div>
+                        
                         <p style="text-align: center; color: var(--primary-color); font-weight: 700; margin-bottom: 0.5rem;">60% Volume Savings!</p>
                         <p style="text-align: center; color: var(--text-medium); margin: 0 0 2rem; line-height: 1.5;">Built for national commercial installers operating at major scale.</p>
                         
@@ -427,9 +460,9 @@
                             <select id="plan" name="plan" required>
                                 <option value="">Select your target volume</option>
                                 <option value="Pre-launch Demo">Pre-launch Demo</option>
-                                <option value="Local Plan (100 Credits)">Local Plan (100 Credits/mo)</option>
-                                <option value="Regional Plan (250 Credits)">Regional Plan (250 Credits/mo)</option>
-                                <option value="National Plan (500 Credits)">National Plan (500 Credits/mo)</option>
+                                <option value="Local Plan (£199/mo)">Local Plan (£199/mo - 100 Credits)</option>
+                                <option value="Regional Plan (£299/mo)">Regional Plan (£299/mo - 250 Credits)</option>
+                                <option value="National Plan (£399/mo)">National Plan (£399/mo - 500 Credits)</option>
                                 <option value="Enterprise Custom Volume">Enterprise / Custom Volume</option>
                             </select>
                         </div>
