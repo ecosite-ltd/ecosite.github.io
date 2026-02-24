@@ -57,6 +57,8 @@
 
     .pricing-card {
         position: relative;
+        display: flex;
+        flex-direction: column;
     }
 
     .pricing-card.featured {
@@ -83,6 +85,7 @@
         font-weight: 700;
         color: var(--text-dark);
         margin-bottom: 1rem;
+        text-align: center;
     }
 
     .plan-price {
@@ -90,12 +93,14 @@
         font-weight: 700;
         color: var(--primary-color);
         margin-bottom: 0.5rem;
+        text-align: center;
     }
 
     .plan-price-small {
         color: var(--text-light);
         font-size: 0.95rem;
         margin-bottom: 1.25rem;
+        text-align: center;
     }
 
     .plan-credits {
@@ -111,31 +116,6 @@
 
     .pricing-card.featured .plan-credits {
         background: rgba(45, 134, 89, 0.15);
-    }
-
-    .plan-features {
-        list-style: none;
-        margin: 1.5rem 0;
-        padding: 0;
-    }
-
-    .plan-features li {
-        padding: 0.6rem 0;
-        border-bottom: 1px solid #f0f0f0;
-        font-size: 0.95rem;
-        color: var(--text-medium);
-    }
-
-    .plan-features li:last-child {
-        border-bottom: none;
-    }
-
-    .plan-features li::before {
-        content: "✓";
-        color: var(--primary-color);
-        font-weight: 700;
-        margin-right: 0.75rem;
-        font-size: 1.1rem;
     }
 
     .select-plan-btn {
@@ -187,7 +167,7 @@
                 </a>
                 <div class="nav-links">
                     <a href="#mission">Mission</a>
-                    <a href="#now pv">Now PV</a>
+                    <a href="#nowpv">Now PV</a>
                     <a href="#contact" class="cta-button">Get Started</a>
                 </div>
                 <button class="mobile-menu-toggle" aria-label="Toggle menu">
@@ -209,7 +189,7 @@
                 <h1 class="hero-title">Accelerating Commercial Solar Deployment</h1>
                 <p class="hero-subtitle">Using intelligent technology to identify, qualify, and help deploy commercial PV systems faster than ever before.</p>
                 <div class="hero-buttons">
-                    <a href="#now pv" class="button button-primary">Discover Now PV</a>
+                    <a href="#nowpv" class="button button-primary">Discover Now PV</a>
                     <a href="#contact" class="button button-secondary">Contact Us</a>
                 </div>
             </div>
@@ -319,38 +299,34 @@
             <div class="pricing-section" id="pricing">
                 <div class="section-header">
                     <h2 class="section-title">Simple, Transparent Pricing</h2>
-                    <p class="section-subtitle">Pay only for sites you export. No hidden fees.</p>
+                    <p class="section-subtitle">One powerful platform. Choose the credit volume that fits your team.</p>
                 </div>
 
                 <div class="credit-explainer">
-                    <h3>How Site Credits Work:</h3>
-                    <ul>
-                        <li><strong>Unlimited Browsing:</strong> Search and preview as many sites as you want</li>
-                        <li><strong>Credits on Export:</strong> Only consume credits when you export sites</li>
-                        <li><strong>Monthly Reset:</strong> Credits refresh on the 1st of each month</li>
-                        <li><strong>Better Value at Scale:</strong> Higher tiers offer lower per-site costs</li>
-                        <li><strong>Top-ups Available:</strong> Need more? Purchase additional credits anytime</li>
+                    <h3 style="text-align: center; margin-bottom: 1.5rem;">Every plan includes full platform access:</h3>
+                    <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                        <li><strong>✓ Full UK & Ireland Coverage</strong></li>
+                        <li><strong>✓ Unlimited Search & Preview</strong></li>
+                        <li><strong>✓ ML-Powered Roof Analysis</strong></li>
+                        <li><strong>✓ Existing PV Detection</strong></li>
+                        <li><strong>✓ CRM & Easy PV Export</strong></li>
+                        <li><strong>✓ CSV Intelligence Downloads</strong></li>
                     </ul>
+                    <div style="padding-top: 1.5rem; border-top: 2px dashed rgba(45, 134, 89, 0.3); text-align: center;">
+                        <p style="margin: 0; font-size: 1.05rem; color: var(--text-dark);">
+                            <strong>How it works:</strong> You only consume a credit when you <em>export</em> a site. Browsing and qualifying are completely free. Credits reset on the 1st of each month.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="pricing-grid">
                     <div class="pricing-card">
                         <div class="popular-badge">Coming Soon</div>
                         <h3 class="plan-name">Local</h3>
-                        <div class="plan-price" style="font-size: 1.75rem; font-weight: 600; color: var(--text-light);">Coming Soon</div>
-                        <div class="plan-price-small">Ideal for local installers</div>
-                        <div class="plan-credits" style="opacity: 0.6;">100 Site Credits/Month</div>
-                        <div style="color: var(--text-light); margin-bottom: 1.5rem; text-align: center; opacity: 0.6;">~£1.99 per site</div>
-                        
-                        <ul class="plan-features" style="opacity: 0.6;">
-                            <li>Specific postcodes</li>
-                            <li>Unlimited search & preview</li>
-                            <li>ML-powered roof analysis</li>
-                            <li>Existing PV detection</li>
-                            <li>Easy PV export</li>
-                            <li>CSV download</li>
-                            <li>Email support</li>
-                        </ul>
+                        <div class="plan-price" style="font-size: 2.25rem; font-weight: 700; color: var(--text-dark);">100 Credits</div>
+                        <div class="plan-price-small">Per Month</div>
+                        <div class="plan-credits" style="background: rgba(0,0,0,0.05); color: var(--text-dark);">~£1.99 per site</div>
+                        <p style="text-align: center; color: var(--text-medium); margin: 1.5rem 0 2rem; line-height: 1.5;">Ideal for local installers focused on specific postcodes and counties.</p>
                         
                         <a href="#contact" class="button button-outline select-plan-btn">Join Waitlist</a>
                     </div>
@@ -358,52 +334,31 @@
                     <div class="pricing-card featured">
                         <div class="popular-badge">Coming Soon</div>
                         <h3 class="plan-name">Regional</h3>
-                        <div class="plan-price" style="font-size: 1.75rem; font-weight: 600; color: var(--text-light);">Coming Soon</div>
-                        <div class="plan-price-small">Best value for growing businesses</div>
-                        <div class="plan-credits" style="opacity: 0.6;">250 Site Credits/Month</div>
-                        <div style="color: var(--text-light); margin-bottom: 1.5rem; text-align: center; opacity: 0.6;">~£1.20 per site (40% savings!)</div>
+                        <div class="plan-price" style="font-size: 2.25rem; font-weight: 700; color: var(--text-dark);">250 Credits</div>
+                        <div class="plan-price-small">Per Month</div>
+                        <div class="plan-credits">~£1.20 per site</div>
+                        <p style="text-align: center; color: var(--primary-color); font-weight: 700; margin-bottom: 0.5rem;">40% Volume Savings!</p>
+                        <p style="text-align: center; color: var(--text-medium); margin: 0 0 2rem; line-height: 1.5;">Best value for growing businesses scaling their sales pipeline.</p>
                         
-                        <ul class="plan-features" style="opacity: 0.6;">
-                            <li>Multi-county coverage</li>
-                            <li>Unlimited search & preview</li>
-                            <li>ML-powered roof analysis</li>
-                            <li>Existing PV detection</li>
-                            <li>Easy PV export</li>
-                            <li>CRM integration</li>
-                            <li>CSV download</li>
-                            <li>Priority email support</li>
-                        </ul>
-                        
-                        <a href="#contact" class="button button-outline select-plan-btn">Join Waitlist</a>
+                        <a href="#contact" class="button button-primary select-plan-btn" style="width: 100%;">Join Waitlist</a>
                     </div>
 
                     <div class="pricing-card">
                         <div class="popular-badge">Coming Soon</div>
                         <h3 class="plan-name">National</h3>
-                        <div class="plan-price" style="font-size: 1.75rem; font-weight: 600; color: var(--text-light);">Coming Soon</div>
-                        <div class="plan-price-small">For national installers</div>
-                        <div class="plan-credits" style="opacity: 0.6;">500 Site Credits/Month</div>
-                        <div style="color: var(--text-light); margin-bottom: 1.5rem; text-align: center; opacity: 0.6;">~£0.80 per site (60% savings!)</div>
-                        
-                        <ul class="plan-features" style="opacity: 0.6;">
-                            <li>Full UK & Ireland</li>
-                            <li>Unlimited search & preview</li>
-                            <li>ML-powered roof analysis</li>
-                            <li>Existing PV detection</li>
-                            <li>Easy PV export</li>
-                            <li>CRM integration</li>
-                            <li>CSV download</li>
-                            <li>Dedicated account manager</li>
-                            <li>Phone support</li>
-                        </ul>
+                        <div class="plan-price" style="font-size: 2.25rem; font-weight: 700; color: var(--text-dark);">500 Credits</div>
+                        <div class="plan-price-small">Per Month</div>
+                        <div class="plan-credits" style="background: rgba(0,0,0,0.05); color: var(--text-dark);">~£0.80 per site</div>
+                        <p style="text-align: center; color: var(--primary-color); font-weight: 700; margin-bottom: 0.5rem;">60% Volume Savings!</p>
+                        <p style="text-align: center; color: var(--text-medium); margin: 0 0 2rem; line-height: 1.5;">Built for national commercial installers operating at major scale.</p>
                         
                         <a href="#contact" class="button button-outline select-plan-btn">Join Waitlist</a>
                     </div>
                 </div>
 
                 <div class="topup-info">
-                    <p style="font-size: 1.1rem; margin-bottom: 0.75rem;">Need more credits? <strong>Top-up packs available:</strong></p>
-                    <p>50 credits: £50 (£1.00/site) • 100 credits: £80 (£0.80/site) • 250 credits: £150 (£0.60/site)</p>
+                    <p style="font-size: 1.1rem; margin-bottom: 0.75rem;">Need a quick boost? <strong>Top-up packs available anytime:</strong></p>
+                    <p>50 credits: £50 (£1.00/site) &nbsp;&bull;&nbsp; 100 credits: £80 (£0.80/site) &nbsp;&bull;&nbsp; 250 credits: £150 (£0.60/site)</p>
                 </div>
             </div>
         </div>
@@ -467,12 +422,12 @@
                         <div class="form-group">
                             <label for="plan">Interested In *</label>
                             <select id="plan" name="plan" required>
-                                <option value="">Select your interest</option>
+                                <option value="">Select your target volume</option>
                                 <option value="Pre-launch Demo">Pre-launch Demo</option>
-                                <option value="Local Plan">Local Plan</option>
-                                <option value="Regional Plan">Regional Plan</option>
-                                <option value="National Plan">National Plan</option>
-                                <option value="Custom Solution">Custom Solution</option>
+                                <option value="Local Plan (100 Credits)">Local Plan (100 Credits/mo)</option>
+                                <option value="Regional Plan (250 Credits)">Regional Plan (250 Credits/mo)</option>
+                                <option value="National Plan (500 Credits)">National Plan (500 Credits/mo)</option>
+                                <option value="Enterprise Custom Volume">Enterprise / Custom Volume</option>
                             </select>
                         </div>
 
@@ -500,7 +455,7 @@
                 <div class="footer-links">
                     <div class="footer-column">
                         <h4>Product</h4>
-                        <a href="#now pv">Now PV Platform</a>
+                        <a href="#nowpv">Now PV Platform</a>
                         <a href="#pricing">Pricing</a>
                     </div>
                     <div class="footer-column">
