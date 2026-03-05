@@ -161,6 +161,124 @@
         color: var(--text-dark);
     }
 
+    /* Free trial banner */
+    .free-trial-banner {
+        background: linear-gradient(135deg, #1a5c3e 0%, #2d8659 100%);
+        color: white;
+        text-align: center;
+        padding: 2.5rem 2rem;
+        border-radius: var(--border-radius);
+        margin: 0 auto 3rem;
+        max-width: 900px;
+        box-shadow: 0 4px 20px rgba(45, 134, 89, 0.3);
+    }
+
+    .free-trial-banner h3 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: white;
+    }
+
+    .free-trial-banner p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        margin-bottom: 1.5rem;
+    }
+
+    .free-trial-banner .button {
+        background: white;
+        color: var(--primary-color);
+        font-weight: 700;
+        padding: 0.85rem 2.5rem;
+        border-radius: 6px;
+        text-decoration: none;
+        display: inline-block;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .free-trial-banner .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* White Label section */
+    .whitelabel-section {
+        padding: 5rem 0;
+        background: #f8f9fa;
+    }
+
+    .whitelabel-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .whitelabel-text h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 1rem;
+    }
+
+    .whitelabel-text p {
+        color: var(--text-medium);
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+
+    .whitelabel-features {
+        list-style: none;
+        padding: 0;
+        margin: 1.5rem 0;
+    }
+
+    .whitelabel-features li {
+        padding: 0.6rem 0;
+        color: var(--text-medium);
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .whitelabel-features li strong {
+        color: var(--text-dark);
+    }
+
+    .whitelabel-cta {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 2.5rem;
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+        border: 2px solid #e8f5e9;
+    }
+
+    .whitelabel-cta h4 {
+        font-size: 1.3rem;
+        color: var(--text-dark);
+        margin-bottom: 0.75rem;
+    }
+
+    .whitelabel-cta p {
+        color: var(--text-medium);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .whitelabel-pilot-badge {
+        display: inline-block;
+        background: #e8f5e9;
+        color: #1a5c3e;
+        padding: 0.5rem 1.25rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
     @media (max-width: 768px) {
         .pricing-card.featured {
             transform: scale(1);
@@ -172,6 +290,15 @@
         
         .plan-price {
             font-size: 2.5rem;
+        }
+
+        .whitelabel-content {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .free-trial-banner h3 {
+            font-size: 1.4rem;
         }
     }
     </style>
@@ -186,6 +313,7 @@
                 <div class="nav-links">
                     <a href="#mission">Mission</a>
                     <a href="#nowpv">Now PV</a>
+                    <a href="#whitelabel">White Label</a>
                     <a href="#contact" class="cta-button">Get Started</a>
                 </div>
                 <button class="mobile-menu-toggle" aria-label="Toggle menu">
@@ -205,10 +333,10 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Accelerating Commercial Solar Deployment</h1>
-                <p class="hero-subtitle">Using intelligent technology to identify, qualify, and help deploy commercial PV systems faster than ever before.</p>
+                <p class="hero-subtitle">GenAI-powered satellite imagery analysis that identifies, qualifies, and helps deploy commercial PV systems faster than ever before.</p>
                 <div class="hero-buttons">
                     <a href="#nowpv" class="button button-primary">Discover Now PV</a>
-                    <a href="#contact" class="button button-secondary">Contact Us</a>
+                    <a href="#contact" class="button button-secondary">Start Free Trial</a>
                 </div>
             </div>
         </div>
@@ -231,7 +359,7 @@
                         </svg>
                     </div>
                     <h3>The Problem</h3>
-                    <p>Commercial solar deployment is held back by inefficient prospecting. Sales teams waste countless hours on manual site identification, often pursuing unsuitable leads while missing high-potential opportunities.</p>
+                    <p>Commercial solar deployment is held back by inefficient prospecting. Sales teams waste countless hours trawling Google Maps for suitable rooftops, manually assessing sites one by one, often pursuing unsuitable leads while missing high-potential opportunities.</p>
                 </div>
 
                 <div class="mission-item">
@@ -242,7 +370,7 @@
                         </svg>
                     </div>
                     <h3>Why It Matters</h3>
-                    <p>Every day of delay means lost carbon savings, higher customer acquisition costs, and slower clean energy deployment. The UK needs to accelerate commercial solar adoption to meet net-zero targets.</p>
+                    <p>Every day of delay means lost carbon savings, higher customer acquisition costs, and slower clean energy deployment. The UK has enormous untapped potential for commercial solar — the opportunity is there, but the prospecting bottleneck is holding the industry back.</p>
                 </div>
 
                 <div class="mission-item">
@@ -252,7 +380,7 @@
                         </svg>
                     </div>
                     <h3>Our Solution</h3>
-                    <p>Now PV uses intelligent technology to identify and qualify commercial solar opportunities in seconds. From geospatial analysis to CRM integration, we streamline the entire prospecting workflow.</p>
+                    <p>Now PV uses GenAI-powered satellite imagery analysis to identify and qualify commercial solar opportunities across entire postcode districts in minutes. From AI roof analysis to design tool integration, we streamline the entire prospecting workflow.</p>
                 </div>
             </div>
         </div>
@@ -262,7 +390,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Introducing Now PV</h2>
-                <p class="section-subtitle">The intelligent site identification platform for commercial solar</p>
+                <p class="section-subtitle">The GenAI-powered commercial solar prospecting platform</p>
             </div>
 
             <div class="nowpv-content">
@@ -273,20 +401,20 @@
                 <div class="nowpv-features">
                     <div class="feature">
                         <div class="feature-number">01</div>
-                        <h3>Search & Discover</h3>
-                        <p>Search by postcode to instantly identify commercial buildings with high solar potential. Our intelligent mapping system shows you exactly where the opportunities are.</p>
+                        <h3>Search & Filter</h3>
+                        <p>Filter by postcode area, system size and roof type to instantly find commercial buildings with solar potential that match your business. Browse and preview sites freely — you only use credits when you want the full details.</p>
                     </div>
 
                     <div class="feature">
                         <div class="feature-number">02</div>
-                        <h3>Qualify Instantly</h3>
-                        <p>View detailed metrics including estimated system capacity (kWp), yearly energy generation, roof material analysis, commercial occupant intelligence, and grid connection availability. Make data-driven decisions in seconds.</p>
+                        <h3>Unlock & Qualify</h3>
+                        <p>Unlock full site intelligence with a single credit. View estimated system capacity (kWp), yearly energy generation, AI-powered roof material and type analysis, commercial occupant data, and grid connection availability. Make data-driven decisions in seconds.</p>
                     </div>
 
                     <div class="feature">
                         <div class="feature-number">03</div>
                         <h3>Seamless Integration</h3>
-                        <p>Send qualified leads directly to Easy PV for automated system design, or export to your CRM. One-click workflows that save hours of manual data entry.</p>
+                        <p>Send qualified sites directly to Midsummer Energy's Easy PV for automated system design, or export to your CRM. One-click workflows that save hours of manual data entry.</p>
                     </div>
                 </div>
             </div>
@@ -294,13 +422,13 @@
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="benefit-icon">⚡</div>
-                    <h4>10x Faster</h4>
-                    <p>Reduce prospecting time from weeks to minutes</p>
+                    <h4>Minutes, Not Weeks</h4>
+                    <p>Analyse entire postcode districts in a single search</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">🎯</div>
                     <h4>Higher Conversion</h4>
-                    <p>Focus on pre-qualified, high-confidence opportunities</p>
+                    <p>Focus on pre-qualified, data-backed opportunities</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">💰</div>
@@ -320,13 +448,19 @@
                     <p class="section-subtitle">One powerful platform. Choose the credit volume that fits your team.</p>
                 </div>
 
+                <!-- Free Trial Banner -->
+                <div class="free-trial-banner">
+                    <h3>Start with 100 Free Credits</h3>
+                    <p>Try Now PV with no commitment. No card required. See the data for yourself.</p>
+                    <a href="#contact" class="button">Start Free Trial</a>
+                </div>
+
                 <div class="credit-explainer">
                     <h3 style="text-align: center; margin-bottom: 1.5rem;">Every plan includes full platform access:</h3>
-                    <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
-                        <li><strong>✓ Full UK Coverage</strong></li>
+                    <ul style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
                         <li><strong>✓ Unlimited Search & Preview</strong></li>
                         <li><strong>✓ AI Enriched Site Data</strong></li>
-                        <li><strong>✓ ML-Powered Roof Analysis</strong></li>
+                        <li><strong>✓ GenAI Roof Analysis</strong></li>
                         <li><strong>✓ Existing PV Detection</strong></li>
                         <li><strong>✓ Local & Upstream Grid Status</strong></li>
                         <li><strong>✓ Easy PV Export</strong></li>
@@ -335,60 +469,58 @@
                     </ul>
                     <div style="padding-top: 1.5rem; border-top: 2px dashed rgba(45, 134, 89, 0.3); text-align: center;">
                         <p style="margin: 0; font-size: 1.05rem; color: var(--text-dark);">
-                            <strong>How it works:</strong> You only consume a credit when you <em>export</em> a site. Browsing and qualifying are completely free. Credits reset on the 1st of each month.
+                            <strong>How it works:</strong> Browse and filter sites for free. You only use a credit when you <em>unlock</em> a site's full details. Credits reset on the 1st of each month.
                         </p>
                     </div>
                 </div>
 
                 <div class="pricing-grid">
                     <div class="pricing-card">
-                        <div class="popular-badge">Coming Soon</div>
                         <h3 class="plan-name">Local</h3>
                         <div class="plan-price"><span>£</span>199</div>
-                        <div class="plan-price-small">/mo (billed annually)</div>
+                        <div class="plan-price-small">/mo</div>
                         
                         <div class="plan-credits" style="background: rgba(0,0,0,0.05); color: var(--text-dark);">
-                            100 Credits per month
-                            <span>(~£1.99 per site)</span>
+                            200 Credits per month
+                            <span>(~£1.00 per site)</span>
                         </div>
                         
                         <p style="text-align: center; color: var(--text-medium); margin: 1.5rem 0 2rem; line-height: 1.5;">Ideal for local installers focused on specific postcodes and counties.</p>
                         
-                        <a href="#contact" class="button button-outline select-plan-btn">Join Waitlist</a>
+                        <a href="#contact" class="button button-outline select-plan-btn">Get Started</a>
                     </div>
 
                     <div class="pricing-card featured">
-                        <div class="popular-badge">Coming Soon</div>
+                        <div class="popular-badge">Best Value</div>
                         <h3 class="plan-name">Regional</h3>
-                        <div class="plan-price"><span>£</span>299</div>
-                        <div class="plan-price-small">/mo (billed annually)</div>
+                        <div class="plan-price"><span>£</span>249</div>
+                        <div class="plan-price-small">/mo</div>
                         
                         <div class="plan-credits">
-                            250 Credits per month
-                            <span>(~£1.20 per site)</span>
+                            300 Credits per month
+                            <span>(~£0.83 per site)</span>
                         </div>
                         
-                        <p style="text-align: center; color: var(--primary-color); font-weight: 700; margin-bottom: 0.5rem;">40% Volume Savings!</p>
+                        <p style="text-align: center; color: var(--primary-color); font-weight: 700; margin-bottom: 0.5rem;">50% More Credits</p>
                         <p style="text-align: center; color: var(--text-medium); margin: 0 0 2rem; line-height: 1.5;">Best value for growing businesses scaling their sales pipeline.</p>
                         
-                        <a href="#contact" class="button button-primary select-plan-btn" style="width: 100%;">Join Waitlist</a>
+                        <a href="#contact" class="button button-primary select-plan-btn" style="width: 100%;">Get Started</a>
                     </div>
 
                     <div class="pricing-card">
-                        <div class="popular-badge">Coming Soon</div>
                         <h3 class="plan-name">National</h3>
-                        <div class="plan-price"><span>£</span>399</div>
-                        <div class="plan-price-small">/mo (billed annually)</div>
+                        <div class="plan-price"><span>£</span>350</div>
+                        <div class="plan-price-small">/mo</div>
                         
                         <div class="plan-credits" style="background: rgba(0,0,0,0.05); color: var(--text-dark);">
                             500 Credits per month
-                            <span>(~£0.80 per site)</span>
+                            <span>(~£0.70 per site)</span>
                         </div>
                         
-                        <p style="text-align: center; color: var(--primary-color); font-weight: 700; margin-bottom: 0.5rem;">60% Volume Savings!</p>
+                        <p style="text-align: center; color: var(--primary-color); font-weight: 700; margin-bottom: 0.5rem;">Maximum Volume</p>
                         <p style="text-align: center; color: var(--text-medium); margin: 0 0 2rem; line-height: 1.5;">Built for national commercial installers operating at major scale.</p>
                         
-                        <a href="#contact" class="button button-outline select-plan-btn">Join Waitlist</a>
+                        <a href="#contact" class="button button-outline select-plan-btn">Get Started</a>
                     </div>
                 </div>
 
@@ -400,12 +532,45 @@
         </div>
     </section>
 
+    <!-- White Label Section -->
+    <section id="whitelabel" class="section whitelabel-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Now PV White Label</h2>
+                <p class="section-subtitle">For Tier 1 installers and operators who need Now PV embedded in their world</p>
+            </div>
+
+            <div class="whitelabel-content">
+                <div class="whitelabel-text">
+                    <h3>Your Platform. Our Intelligence.</h3>
+                    <p>For larger commercial installers and operators, we deploy a bespoke Now PV instance directly into your environment — fully branded, fully integrated, fully yours.</p>
+                    <p>From rooftop identification through to pitch-ready output, Now PV White Label automates your entire prospecting workflow end to end.</p>
+                    
+                    <ul class="whitelabel-features">
+                        <li><strong>✓ Bespoke deployment</strong> in your infrastructure</li>
+                        <li><strong>✓ Integration with your preferred design tools</strong> — Easy PV, PVsyst, or others</li>
+                        <li><strong>✓ CRM and workflow automation</strong> tailored to your sales process</li>
+                        <li><strong>✓ Custom coverage areas</strong> and data enrichment</li>
+                        <li><strong>✓ Dedicated onboarding</strong> and ongoing support</li>
+                    </ul>
+                </div>
+
+                <div class="whitelabel-cta">
+                    <div class="whitelabel-pilot-badge">Currently in Pilot</div>
+                    <h4>Let's Talk</h4>
+                    <p>We're working with UK commercial installers to shape the White Label offering. If you're operating at scale and want to see how Now PV fits your workflow, get in touch.</p>
+                    <a href="#contact" class="button button-primary">Book a Conversation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="section contact-section">
         <div class="container">
             <div class="contact-content">
                 <div class="contact-info">
-                    <h2>Get Early Access to Now PV</h2>
-                    <p class="contact-description">Be among the first to experience Now PV. Contact us for a pre-launch demo and see how our intelligent site identification platform can transform your solar sales process.</p>
+                    <h2>Get Started with Now PV</h2>
+                    <p class="contact-description">Start your free trial with 100 credits, choose a plan, or talk to us about White Label. See how Now PV can transform your commercial solar prospecting.</p>
                     
                     <div class="contact-details">
                         <div class="contact-detail">
@@ -458,12 +623,12 @@
                         <div class="form-group">
                             <label for="plan">Interested In *</label>
                             <select id="plan" name="plan" required>
-                                <option value="">Select your target volume</option>
-                                <option value="Pre-launch Demo">Pre-launch Demo</option>
-                                <option value="Local Plan (£199/mo)">Local Plan (£199/mo - 100 Credits)</option>
-                                <option value="Regional Plan (£299/mo)">Regional Plan (£299/mo - 250 Credits)</option>
-                                <option value="National Plan (£399/mo)">National Plan (£399/mo - 500 Credits)</option>
-                                <option value="Enterprise Custom Volume">Enterprise / Custom Volume</option>
+                                <option value="">What are you interested in?</option>
+                                <option value="Free Trial (100 Credits)">Free Trial (100 Credits)</option>
+                                <option value="Local Plan (£199/mo)">Local Plan (£199/mo - 200 Credits)</option>
+                                <option value="Regional Plan (£249/mo)">Regional Plan (£249/mo - 300 Credits)</option>
+                                <option value="National Plan (£350/mo)">National Plan (£350/mo - 500 Credits)</option>
+                                <option value="White Label">White Label / Enterprise</option>
                             </select>
                         </div>
 
@@ -493,6 +658,7 @@
                         <h4>Product</h4>
                         <a href="#nowpv">Now PV Platform</a>
                         <a href="#pricing">Pricing</a>
+                        <a href="#whitelabel">White Label</a>
                     </div>
                     <div class="footer-column">
                         <h4>Company</h4>
