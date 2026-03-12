@@ -279,6 +279,82 @@
         margin-bottom: 1.5rem;
     }
 
+    /* Consultancy section */
+    .consultancy-section {
+        padding: 5rem 0;
+        background: white;
+    }
+
+    .consultancy-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .consultancy-text h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 1rem;
+    }
+
+    .consultancy-text p {
+        color: var(--text-medium);
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+
+    .consultancy-services {
+        list-style: none;
+        padding: 0;
+        margin: 1.5rem 0;
+    }
+
+    .consultancy-services li {
+        padding: 0.6rem 0;
+        color: var(--text-medium);
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .consultancy-services li strong {
+        color: var(--text-dark);
+    }
+
+    .consultancy-cta {
+        background: #f8f9fa;
+        border-radius: var(--border-radius);
+        padding: 2.5rem;
+        text-align: center;
+        border: 2px solid #e8f5e9;
+    }
+
+    .consultancy-cta h4 {
+        font-size: 1.3rem;
+        color: var(--text-dark);
+        margin-bottom: 0.75rem;
+    }
+
+    .consultancy-cta p {
+        color: var(--text-medium);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .consultancy-credential {
+        display: inline-block;
+        background: #e8f5e9;
+        color: #1a5c3e;
+        padding: 0.5rem 1.25rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
     @media (max-width: 768px) {
         .pricing-card.featured {
             transform: scale(1);
@@ -293,6 +369,11 @@
         }
 
         .whitelabel-content {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .consultancy-content {
             grid-template-columns: 1fr;
             gap: 2rem;
         }
@@ -314,6 +395,7 @@
                     <a href="#mission">Mission</a>
                     <a href="#nowpv">Now PV™</a>
                     <a href="#whitelabel">White Label</a>
+                    <a href="#consultancy">Consultancy</a>
                     <a href="#contact" class="cta-button">Get Started</a>
                 </div>
                 <button class="mobile-menu-toggle" aria-label="Toggle menu">
@@ -564,12 +646,46 @@
         </div>
     </section>
 
+    <!-- Consultancy Section -->
+    <section id="consultancy" class="section consultancy-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">GenAI Consultancy</h2>
+                <p class="section-subtitle">Expert guidance on applying generative AI to commercial solar operations</p>
+            </div>
+
+            <div class="consultancy-content">
+                <div class="consultancy-text">
+                    <h3>From Strategy to Implementation</h3>
+                    <p>Not sure where GenAI fits into your operation? We provide hands-on consultancy to help commercial solar businesses understand, evaluate and implement generative AI across their workflows.</p>
+                    <p>Led by an experienced Enterprise Cloud Solution Architect with deep expertise in GenAI pipeline development for the commercial PV sector, our consultancy bridges the gap between AI potential and practical deployment.</p>
+                    
+                    <ul class="consultancy-services">
+                        <li><strong>✓ GenAI readiness assessments</strong> for your prospecting and sales workflows</li>
+                        <li><strong>✓ Satellite imagery analysis strategy</strong> and pipeline architecture</li>
+                        <li><strong>✓ Cloud infrastructure design</strong> for AI-driven solar platforms</li>
+                        <li><strong>✓ Data pipeline evaluation</strong> and optimisation</li>
+                        <li><strong>✓ Integration planning</strong> with existing CRM, design tools and business systems</li>
+                    </ul>
+                </div>
+
+                <div class="consultancy-cta">
+                    <div class="consultancy-credential">Enterprise Cloud Architect</div>
+                    <div class="consultancy-credential">GenAI Pipeline Specialist</div>
+                    <h4>Book a Discovery Call</h4>
+                    <p>Whether you're exploring what GenAI could do for your business or ready to build, we'll help you cut through the hype and focus on what actually delivers value.</p>
+                    <a href="#contact" class="button button-primary">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="section contact-section">
         <div class="container">
             <div class="contact-content">
                 <div class="contact-info">
                     <h2>Get Started with Now&nbsp;PV™</h2>
-                    <p class="contact-description">Start your free trial with 100 credits, choose a plan, or talk to us about White Label. See how Now PV can transform your commercial solar prospecting.</p>
+                    <p class="contact-description">Start your free trial with 100 credits, choose a plan, or talk to us about White Label and consultancy. See how Now PV and our GenAI expertise can transform your commercial solar operations.</p>
                     
                     <div class="contact-details">
                         <div class="contact-detail">
@@ -618,6 +734,7 @@
                                 <option value="Regional Plan (£249/mo)">Regional Plan (£249/mo - 300 Credits)</option>
                                 <option value="National Plan (£299/mo)">National Plan (£299/mo - 400 Credits)</option>
                                 <option value="White Label">White Label / Enterprise</option>
+                                <option value="GenAI Consultancy">GenAI Consultancy</option>
                             </select>
                         </div>
 
@@ -644,10 +761,11 @@
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
-                        <h4>Product</h4>
+                        <h4>Services</h4>
                         <a href="#nowpv">Now PV™ Platform</a>
                         <a href="#pricing">Pricing</a>
                         <a href="#whitelabel">White Label</a>
+                        <a href="#consultancy">Consultancy</a>
                     </div>
                     <div class="footer-column">
                         <h4>Company</h4>
